@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+ 
+<suite name="TestAutomation" thread-count="1" verbose="1" >
+	
+	<parameter name="appUrl" value="${appUrl}"/>
+	<parameter name="remoteDriverUrl" value="http://ec2-52-52-237-5.us-west-1.compute.amazonaws.com:4444/wd/hub"/>
+	
+	<test name="regressiontest">  
+		<classes>
+		  <class name="org.cdsdemo.testautomation.regression.HomePageTest"/>
+		</classes>  
+	</test>
+	
+</suite>
