@@ -19,7 +19,7 @@ public class HomePageTest {
 	@BeforeClass
 	public void setUp(String remoteDriverURL) throws MalformedURLException {
 		System.out.println("Remote Driver URL :: "+remoteDriverURL);
-		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		driver = new RemoteWebDriver(new URL(remoteDriverURL), capabilities);
 		System.out.println("Driver initialized : "+driver);
 		driver.manage().window().maximize();
