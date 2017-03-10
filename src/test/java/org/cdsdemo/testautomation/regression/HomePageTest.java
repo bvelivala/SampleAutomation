@@ -32,7 +32,7 @@ public class HomePageTest {
 		driver.navigate().to(appUrl);
 		String url = driver.getCurrentUrl();	
 	  	System.out.println("Driver current url is "+url);
-		Assert.assertTrue(url.contains("InsuranceManagement"), "Driver's Current Url doesn't match");
+		Assert.assertTrue(url.contains("autoclaim"), "Driver's Current Url doesn't match");
 	}
 
 	@Parameters({ "appUrl" })
@@ -41,12 +41,12 @@ public class HomePageTest {
 		driver.navigate().to(appUrl);
 		String strPageTitle = driver.getTitle();
 		System.out.println("*** Verifying page title ***");
-		Assert.assertTrue(strPageTitle.equalsIgnoreCase("Insurance Management Portal"), "Page title doesn't match");
+		Assert.assertTrue(strPageTitle.equalsIgnoreCase("Login Page"), "Page title doesn't match");
 	}
 
         @Test
         public void testDriverPageSource() {
-                Assert.assertTrue(driver.getPageSource().contains("INSURANCE MANAGEMENT PORTAL"), "Driver's page source doesn't match");
+                Assert.assertTrue(driver.getPageSource().contains("Register User"), "Driver's page source doesn't match");
         }
 
 	
