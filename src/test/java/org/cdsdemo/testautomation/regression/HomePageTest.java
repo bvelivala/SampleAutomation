@@ -20,15 +20,17 @@ public class HomePageTest {
 	
 	@Parameters({ "remoteDriverUrl", "isRemote" })
 	@BeforeClass
-	public void setUp(String remoteDriverURL) throws MalformedURLException {
+	public void setUp(String remoteDriverURL, String isRemote) throws MalformedURLException {
 		System.out.println("Remote Driver URL :: "+remoteDriverURL);
+		System.out.println("Remote Driver     :: "+isRemote);
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		
-		if ("Y".equalsIgnoreCase(isRemoteDriver)) {
+		if ("Y".equalsIgnoreCase(isRemote)) {
 			rdriver = new RemoteWebDriver(new URL(remoteDriverURL), capabilities);
 			System.out.println("Remote Driver initialized : "+driver);
 			rdriver.manage().window().maximize();
 		} else {
+			isRemoteDriver = false;
 			driver = new RemoteWebDriver(new URL(remoteDriverURL), capabilities);
 			System.out.println("Web Driver initialized : "+driver);
 			driver.manage().window().maximize();
