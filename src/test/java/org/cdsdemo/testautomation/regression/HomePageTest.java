@@ -24,7 +24,7 @@ public class HomePageTest {
 		System.out.println("Remote Driver URL :: "+remoteDriverURL);
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		
-		if ("Y".equalsIgnoreCase(isRemote)) {
+		if ("Y".equalsIgnoreCase(isRemoteDriver)) {
 			rdriver = new RemoteWebDriver(new URL(remoteDriverURL), capabilities);
 			System.out.println("Remote Driver initialized : "+driver);
 			rdriver.manage().window().maximize();
