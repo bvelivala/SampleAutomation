@@ -15,78 +15,44 @@ import org.testng.annotations.Test;
 public class HomePageTest {
 	
 	public RemoteWebDriver rdriver;
-	public WebDriver driver;
-	public boolean isRemoteDriver = true;
 	
-	@Parameters({ "remoteDriverUrl", "isRemote" })
+	@Parameters({ "remoteDriverUrl" })
 	@BeforeClass
-	public void setUp(String remoteDriverURL, String isRemote) throws MalformedURLException {
+	public void setUp(String remoteDriverURL) throws MalformedURLException {
 		System.out.println("Remote Driver URL :: "+remoteDriverURL);
-		System.out.println("Remote Driver     :: "+isRemote);
-		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-		
-		if ("Y".equalsIgnoreCase(isRemote)) {
-			rdriver = new RemoteWebDriver(new URL(remoteDriverURL), capabilities);
-			System.out.println("Remote Driver initialized : "+driver);
-			rdriver.manage().window().maximize();
-		} else {
-			isRemoteDriver = false;
-			driver = new RemoteWebDriver(new URL(remoteDriverURL), capabilities);
-			System.out.println("Web Driver initialized : "+driver);
-			driver.manage().window().maximize();
-		}
+		DesiredCapabilities capabilities = DesiredCapabilities.chrome();		
+		rdriver = new RemoteWebDriver(new URL(remoteDriverURL), capabilities);
+		System.out.println("Remote Driver initialized : "+driver);
+		rdriver.manage().window().maximize();
 	}
 	
 	@Parameters({ "appUrl" })
         @Test
 	public void testDriverCurrentUrl(String appUrl) {
-		System.out.println("*** Navigation to Application ***"+appUrl);
-		String url = "";
-		
-		if (isRemoteDriver) {
-			rdriver.navigate().to(appUrl);
-			url = rdriver.getCurrentUrl();
-		} else {
-			driver.navigate().to(appUrl);
-			url = driver.getCurrentUrl();
-		}
-		
+		System.out.println("*** Navigation to Application ***"+appUrl);		
+		rdriver.navigate().to(appUrl);
+		String url = rdriver.getCurrentUrl();		
 	  	System.out.println("Driver current url is "+url);
 		Assert.assertTrue(url.contains("autoclaim"), "Driver's Current Url doesn't match");
 	}
 
 	@Parameters({ "appUrl" })
 	@Test
-	public void testHomePageTitle(String appUrl) {
-		String strPageTitle = "";
-		
-		if (isRemoteDriver) {
-			rdriver.navigate().to(appUrl);
-			strPageTitle = rdriver.getTitle();
-		} else {
-			driver.navigate().to(appUrl);
-			strPageTitle = driver.getTitle();
-		}
-		
+	public void testHomePageTitle(String appUrl) {		
+		rdriver.navigate().to(appUrl);
+		String strPageTitle = rdriver.getTitle();				
 		System.out.println("*** Verifying page title ***");
 		Assert.assertTrue(strPageTitle.equalsIgnoreCase("Login Page"), "Page title doesn't match");
 	}
 
         @Test
         public void testDriverPageSource() {
-		if (isRemoteDriver){ 
-                	Assert.assertTrue(rdriver.getPageSource().contains("Register User"), "Driver's page source doesn't match");
-		} else {
-			Assert.assertTrue(driver.getPageSource().contains("Register User"), "Driver's page source doesn't match");
-		}
+                Assert.assertTrue(rdriver.getPageSource().contains("Register User"), "Driver's page source doesn't match");		
         }
 
 	
 	@AfterClass
-	public void closeBrowser() {
-		if (driver != null) {
-			driver.quit();
-		}
+	public void closeBrowser() {		
 		if (rdriver != null) {
 			rdriver.quit();
 		}
