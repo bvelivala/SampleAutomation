@@ -22,7 +22,7 @@ public class HomePageTest {
 		System.out.println("Remote Driver URL :: "+remoteDriverURL);
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();		
 		rdriver = new RemoteWebDriver(new URL(remoteDriverURL), capabilities);
-		System.out.println("Remote Driver initialized : "+driver);
+		System.out.println("Remote Driver initialized : "+rdriver);
 		rdriver.manage().window().maximize();
 	}
 	
