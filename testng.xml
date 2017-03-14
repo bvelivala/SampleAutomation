@@ -2,8 +2,7 @@
  
 <suite name="TestAutomation" thread-count="1" verbose="1" >
 	
-	<parameter name="appUrl" value="${appUrl}"/>
-	<parameter name="isRemote" value="${isRemote}"/>
+	<parameter name="appUrl" value="${appUrl}"/>	
 	<parameter name="remoteDriverUrl" value="http://ec2-52-52-237-5.us-west-1.compute.amazonaws.com:4444/wd/hub"/>
 	
 	<test name="regressiontest">  
