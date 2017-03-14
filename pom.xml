@@ -55,6 +55,7 @@
           <configuration>
 	    <systemPropertyVariables>
                 <appUrl>${appUrl}</appUrl>
+		<isRemote>${isRemote}</isRemote>
             </systemPropertyVariables> 
             <suiteXmlFiles>
               <suiteXmlFile>testng.xml</suiteXmlFile>
