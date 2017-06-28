@@ -22,7 +22,7 @@ public class HomePageTest {
 	public void setUp(String remoteDriverURL) throws MalformedURLException {
 		System.out.println("Remote Driver URL :: "+remoteDriverURL);
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-		capabilities.setCapability(CapabilityType.PROXY, null);
+		capabilities.setCapability(org.openqa.selenium.remote.CapabilityType.PROXY, null);
 		rdriver = new RemoteWebDriver(new URL(remoteDriverURL), capabilities);
 		System.out.println("Remote Driver initialized : "+rdriver);
 		rdriver.manage().window().maximize();
