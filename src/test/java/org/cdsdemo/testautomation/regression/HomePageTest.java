@@ -25,6 +25,7 @@ public class HomePageTest {
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		//String proxy = null;
 		Proxy proxy = new Proxy();
+		proxy.IsAutoDetect=true;
 		capabilities.setCapability(CapabilityType.PROXY, proxy);
 		rdriver = new RemoteWebDriver(new URL(remoteDriverURL), capabilities);
 		System.out.println("Remote Driver initialized : "+rdriver);
